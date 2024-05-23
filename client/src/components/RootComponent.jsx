@@ -7,7 +7,7 @@ const RootComponent = () => {
 
 	useEffect(() => {
 		axios
-			.get('http://127.0.0.1:8000/tasks/api/v1/categories/')
+			.get('https://womendb-api.onrender.com/tasks/api/v1/categories/')
 			.then((response) => {
 				setCategories(response.data);
 			})

@@ -12,13 +12,13 @@ export const getAllTasks = () => {
 
 export const getAllCategories = (categoryId) => {
 	return axios.get(
-		`http://127.0.0.1:8000/tasks/api/v1/categories/${categoryId}/`
+		`https://womendb-api.onrender.com/tasks/api/v1/categories/${categoryId}/`
 	);
 };
 
 export const getAllWomen = (categoryId) => {
 	return axios.get(
-		`http://127.0.0.1:8000/tasks/api/v1/women/?category=${categoryId}`
+		`https://womendb-api.onrender.com/tasks/api/v1/women/?category=${categoryId}`
 	);
 };
 
