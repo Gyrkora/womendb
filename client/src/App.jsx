@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import TasksPage from './pages/TasksPage';
 // import TaskFormPage from './pages/TaskFormPage';
 import { Navigation } from './components/Navigation';
@@ -13,15 +13,8 @@ function App() {
 			<Navigation />
 
 			<Routes>
-				{/* <Route path="/" element={<Navigate to="/tasks" />} />
-				<Route path="/tasks/api/v1/categories" exact component={Categories} />
-				<Route path="/category/:categoryId" component={WomenByCategory} /> */}
-
-				<Route path="/" element={<Navigate to="/tasks" />} />
-				<Route path="/tasks" element={<RootComponent />} />
+				<Route path="/" element={<RootComponent />} />
 				<Route path="/category/:categoryId" element={<WomenByCategory />} />
-				{/* <Route path="/tasks-create" element={<TaskFormPage />} /> */}
-				{/* <Route path="/tasks/:id" element={<TaskFormPage />} /> */}
 			</Routes>
 			{/* <Toaster /> */}
 		</BrowserRouter>

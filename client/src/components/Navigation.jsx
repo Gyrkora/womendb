@@ -5,7 +5,7 @@ import logo from '../assets/logo.svg';
 export function Navigation() {
 	return (
 		<NavigationContainer>
-			<Link to="/tasks">
+			<Link to="/">
 				<img src={logo} alt="logo" />
 				<p>Women DB</p>
 			</Link>
