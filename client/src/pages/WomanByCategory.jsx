@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { CardCategory, CategoriesContainer } from '../styles/Categories.styles';
 import { SearchInput } from '../components/SearchInput';
 import { getAllCategories, getAllWomen } from '../api/tasks.api';
+import { Loader } from '../components/UI/Loader';
 
 export const WomenByCategory = () => {
 	const { categoryId } = useParams();
@@ -11,6 +12,7 @@ export const WomenByCategory = () => {
 	const [category, setCategory] = useState({});
 	const [query, setQuery] = useState('');
 	const [filteredResults, setFilteredResults] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		async function loadCategories() {
@@ -23,12 +25,15 @@ export const WomenByCategory = () => {
 		}
 
 		async function loadWomen() {
+			setLoading(true);
 			try {
 				const response = await getAllWomen(categoryId);
 				setWomen(response.data);
 				setFilteredResults(response.data);
+				setLoading(false);
 			} catch (error) {
 				console.error('An error occurred while fetching category:', error);
+				setLoading(false);
 			}
 		}
 
@@ -48,6 +53,15 @@ export const WomenByCategory = () => {
 			setFilteredResults(newFilteredResults);
 		}
 	};
+
+	if (loading) {
+		return (
+			<div>
+				<Loader />
+			</div>
+		);
+	}
+
 	return (
 		<div>
 			<SearchInput

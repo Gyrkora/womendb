@@ -8,7 +8,7 @@ export const Loader = () => {
 	return (
 		<LoaderMainContainer>
 			<LoaderContainer></LoaderContainer>
-			<p>wait a moment, please 👀</p>
+			<p>Loading...</p>
 
 			{/* <div className="loader">
 				<div></div>
