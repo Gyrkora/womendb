@@ -14,7 +14,6 @@ const RootComponent = () => {
 			try {
 				const response = await getAllCategoriesList();
 				setCategories(response.data);
-				setLoading(false);
 			} catch (error) {
 				console.error('Error fetching categories:', error);
 			} finally {
