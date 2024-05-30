@@ -1,24 +1,28 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { Categories } from '../pages/Categories';
 import { Loader } from './UI/Loader';
+import { getAllCategoriesList } from '../api/tasks.api';
 
 const RootComponent = () => {
 	const [categories, setCategories] = useState([]);
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
-		setLoading(true);
-
-		axios
-			.get('https://womendb-api.onrender.com/tasks/api/v1/categories/')
-			.then((response) => {
+		async function loadCategoriesList() {
+			setLoading(true);
+			try {
+				const response = await getAllCategoriesList();
 				setCategories(response.data);
 				setLoading(false);
-			})
-			.catch((error) => console.error('Error fetching categories:', error));
-		setLoading(false);
-	});
+			} catch (error) {
+				console.error('Error fetching categories:', error);
+			} finally {
+				setLoading(false);
+			}
+		}
+		loadCategoriesList();
+	}, []);
 
 	if (loading) {
 		return (

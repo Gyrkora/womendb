@@ -30,9 +30,9 @@ export const WomenByCategory = () => {
 				const response = await getAllWomen(categoryId);
 				setWomen(response.data);
 				setFilteredResults(response.data);
-				setLoading(false);
 			} catch (error) {
 				console.error('An error occurred while fetching category:', error);
+			} finally {
 				setLoading(false);
 			}
 		}

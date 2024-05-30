@@ -2,13 +2,16 @@ import axios from 'axios';
 
 const tasksApi = axios.create({
 	baseURL: 'http://127.0.0.1:8000/tasks/api/v1/tasks',
-	// categoriesURL: 'http://127.0.0.1:8000/tasks/api/v1/categories/',
 });
 
 export const getAllTasks = () => {
 	return tasksApi.get('/');
 };
 // return axios.get('http://localhost:8000/tasks/api/v1/tasks/');
+
+export const getAllCategoriesList = () => {
+	return axios.get('https://womendb-api.onrender.com/tasks/api/v1/categories/');
+};
 
 export const getAllCategories = (categoryId) => {
 	return axios.get(
