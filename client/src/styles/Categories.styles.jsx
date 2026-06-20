@@ -97,70 +97,88 @@ export const SearchInputContainer = styled.input`
 // Categories mainpage
 
 export const CategoriesMainContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+	gap: 1.5rem;
+	max-width: 1100px;
 	margin: 0 auto;
-	/* flex-wrap: wrap; */
-	background-image: url(${(props) => props.$bgforimage});
-	background-size: repeat;
-	background-position: center;
+	padding: 3rem 1rem 4rem;
 	position: relative;
-	/* min-height: 100vh; */
 	width: 100%;
-	margin-top: 50px;
-	/* background-color: black; */
-	gap: 35px;
 
 	a {
+		display: block;
 		text-decoration: none;
-		font-size: 25px;
-		color: black;
-		font-weight: bold;
-		transition: all 0.2s ease-in-out;
-	}
-
-	@media (min-width: 768px) {
-		background-size: cover;
-		flex-direction: row;
-		flex-wrap: wrap;
-
-		/* 
-		&:hover p {
-			color: black;
-			background-color: #cdc5ceef;
-
-			border: 5px solid #980e0e;
-			border-radius: 10px;
-			padding: 2px;
-		} */
+		color: inherit;
 	}
 `;
 
-export const CardCategoriesMain = styled(CardCategory)`
-	height: 150px;
-	border-width: 8px;
-	transition: all 0.2s ease-in-out;
-	background-color: rgb(255, 255, 255, 0.6);
+export const CardCategoriesMain = styled.div`
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	min-height: 220px;
+	height: 220px;
+	overflow: hidden;
+	padding: 1rem;
+	background: #111;
+	border: 1px solid #2a2a2a;
+	border-radius: 0;
+	color: #f5f5f0;
+	transition: border-color 0.2s ease, transform 0.2s ease;
+	isolation: isolate;
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: -2;
+		background-image: url(${(props) => props.$cardCategoryImage});
+		background-size: cover;
+		background-position: center;
+		filter: grayscale(1) brightness(0.35);
+		transition: filter 0.25s ease, transform 0.25s ease;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		height: 4px;
+		background: #e63946;
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 0.2s ease;
+	}
+
+	p {
+		margin: 0;
+		color: #f5f5f0;
+		font-family: 'Anton', sans-serif;
+		font-size: clamp(1.7rem, 7vw, 2.45rem);
+		line-height: 0.95;
+		letter-spacing: 0.03em;
+		text-align: left;
+		text-transform: uppercase;
+		text-shadow: 0 2px 18px rgba(0, 0, 0, 0.8);
+	}
 
 	@media (min-width: 768px) {
 		&:hover {
-			background-image: url(${(props) => props.$cardCategoryImage});
-			background-size: cover;
-			background-position: center;
 			cursor: pointer;
-			width: 300px;
+			border-color: #e63946;
+			transform: translateY(-4px);
+		}
 
-			p {
-				color: black;
-				background-color: #cdc5ceef;
+		&:hover::before {
+			filter: grayscale(0) brightness(0.6);
+			transform: scale(1.03);
+		}
 
-				border: 5px solid #980e0e;
-				border-radius: 10px;
-				padding: 2px;
-			}
+		&:hover::after {
+			transform: scaleX(1);
 		}
 	}
 `;

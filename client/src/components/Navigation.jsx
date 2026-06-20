@@ -7,8 +7,8 @@ export function Navigation() {
 		<NavigationContainer>
 			<Link to="/">
 				<img src={logo} alt="logo" />
-				<p>Women DB</p>
-				<p>la base de datos universal de mujeres en la historia y en la actualidad</p>
+				<p className="wordmark">WOMEN <span>DB</span></p>
+				<p className="tagline">la base de datos universal de mujeres en la historia y en la actualidad</p>
 			</Link>
 		</NavigationContainer>
 	);
