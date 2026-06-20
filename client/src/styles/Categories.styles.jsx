@@ -1,27 +1,23 @@
 import styled from 'styled-components';
 
 export const CategoriesContainer = styled.div`
-	display: grid;
-	grid-template-columns: repeat(auto-fill, 200px);
-	gap: 4rem 3rem;            /* fila 4rem, columna 3rem → más aire */
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 	justify-content: center;
-	align-items: start;
-
-	padding: 3rem;
 	text-align: center;
-
+	margin: 0 auto;
+	flex-wrap: wrap;
 	background-image: url(${(props) => props.$bgforimage});
 	background-size: repeat;
 	background-position: center;
 	position: relative;
 	min-height: 100vh;
-	// width: 100%;
-	max-width: 95%;
-	margin: 0 auto
+	width: 100%;
+	gap: 30px;
 
 	@media (min-width: 768px) {
 		background-size: cover;
-		
 	}
 
 	&::before {
@@ -116,6 +112,7 @@ export const CategoriesMainContainer = styled.div`
 	width: 100%;
 	margin-top: 50px;
 	/* background-color: black; */
+	gap: 35px;
 
 	a {
 		text-decoration: none;
@@ -129,6 +126,7 @@ export const CategoriesMainContainer = styled.div`
 		background-size: cover;
 		flex-direction: row;
 		flex-wrap: wrap;
+
 		/* 
 		&:hover p {
 			color: black;
