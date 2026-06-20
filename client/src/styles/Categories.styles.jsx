@@ -40,8 +40,8 @@ export const CardCategory = styled.div`
 	text-align: center;
 	z-index: 10;
 
-	width: 200px;
-	height: 380px;             /* más alto → más vertical, menos cuadrada */
+	width: 250px;
+	height: 450px;             /* más alto → más vertical, menos cuadrada */
 	margin: 0;
 	padding: 1rem;
 
@@ -91,7 +91,7 @@ export const SearchInputContainer = styled.input`
 	justify-content: center;
 	text-align: center;
 
-	margin: 10px auto;
+	margin: 40px auto;
 `;
 
 // Categories mainpage
