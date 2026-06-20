@@ -44,7 +44,7 @@ export const WomenByCategory = () => {
 	const handleInputChange = (e) => {
 		const newQuery = e.target.value;
 		setQuery(newQuery);
-		if (newQuery.lenght === 0) {
+		if (newQuery.length === 0) {
 			setFilteredResults(women);
 		} else {
 			const newFilteredResults = women.filter((woman) =>
