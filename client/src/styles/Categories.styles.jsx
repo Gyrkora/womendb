@@ -1,22 +1,27 @@
 import styled from 'styled-components';
 
 export const CategoriesContainer = styled.div`
-	display: flex;
-	flex-direction: row;
-	align-items: center;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 200px);
+	gap: 4rem 3rem;            /* fila 4rem, columna 3rem → más aire */
 	justify-content: center;
+	align-items: start;
+
+	padding: 3rem;
 	text-align: center;
-	margin: 0 auto;
-	flex-wrap: wrap;
+
 	background-image: url(${(props) => props.$bgforimage});
 	background-size: repeat;
 	background-position: center;
 	position: relative;
 	min-height: 100vh;
-	width: 100%;
+	// width: 100%;
+	max-width: 95%;
+	margin: 0 auto
 
 	@media (min-width: 768px) {
 		background-size: cover;
+		
 	}
 
 	&::before {
@@ -35,26 +40,47 @@ export const CardCategory = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-start;
 	text-align: center;
 	z-index: 10;
 
 	width: 200px;
-
-	height: 300px;
-	margin: 2rem;
+	height: 380px;             /* más alto → más vertical, menos cuadrada */
+	margin: 0;
 	padding: 1rem;
 
 	border-radius: 10px;
 	color: black;
 	border: 5px solid #980e0e;
+	background-color: rgba(255, 255, 255, 0.6);
 
-	background-color: rgb(255, 255, 255, 0.6);
+	h2, h3 {                   /* ajusta al tag real */
+		min-height: 3em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 0 0.75rem;
+		font-size: 1.1rem;
+		line-height: 1.2;
+	}
 
 	img {
-		width: 17vh;
-		height: 150px;
+		width: 90%;            /* deja aire a los lados, como antes */
+		height: 190px;         /* más alta que ancha → vertical */
+		object-fit: cover;
+		object-position: center top;   /* prioriza la cara al recortar */
+		border-radius: 6px;
 		margin: 0;
+		flex-shrink: 0;
+	}
+
+	p {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0.75rem 0 0;
+		font-size: 0.95rem;
 	}
 `;
 
