@@ -19,54 +19,108 @@ export const CategoriesContainer = styled.div`
 	@media (min-width: 768px) {
 		background-size: cover;
 	}
-
-	&::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: rgba(0, 0, 0, 0.6);
-		z-index: 1;
-	}
+&::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(18, 11, 11, 0.5);   /* antes: rgba(0, 0, 0, 0.6) */
+	z-index: 1;
+}
 `;
 
+// export const CardCategory = styled.div`
+// 	display: flex;
+// 	flex-direction: column;
+// 	align-items: center;
+// 	justify-content: flex-start;
+// 	text-align: center;
+// 	z-index: 10;
+
+// 	width: 250px;
+// 	height: 450px;             /* más alto → más vertical, menos cuadrada */
+// 	margin: 0;
+// 	padding: 1rem;
+
+// 	border-radius: 10px;
+// 	color: black;
+// 	border: 5px solid #980e0e;
+// 	background-color: rgba(255, 255, 255, 0.6);
+
+// 	h2, h3 {                   /* ajusta al tag real */
+// 		min-height: 3em;
+// 		display: flex;
+// 		align-items: center;
+// 		justify-content: center;
+// 		margin: 0 0 0.75rem;
+// 		font-size: 1.1rem;
+// 		line-height: 1.2;
+// 	}
+
+// 	img {
+// 		width: 90%;            /* deja aire a los lados, como antes */
+// 		height: 190px;         /* más alta que ancha → vertical */
+// 		object-fit: cover;
+// 		object-position: center top;   /* prioriza la cara al recortar */
+// 		border-radius: 6px;
+// 		margin: 0;
+// 		flex-shrink: 0;
+// 	}
+
+// 	p {
+// 		flex: 1;
+// 		display: flex;
+// 		align-items: center;
+// 		justify-content: center;
+// 		margin: 0.75rem 0 0;
+// 		font-size: 0.95rem;
+// 	}
+// `;
+
+
 export const CardCategory = styled.div`
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
 	text-align: center;
 	z-index: 10;
+	overflow: hidden;
 
 	width: 250px;
-	height: 450px;             /* más alto → más vertical, menos cuadrada */
-	margin: 0;
-	padding: 1rem;
+	height: 450px;
+	padding: 1.25rem;
 
-	border-radius: 10px;
-	color: black;
-	border: 5px solid #980e0e;
-	background-color: rgba(255, 255, 255, 0.6);
+	background-color: #100b0b;
+	border: 1px solid #241818;
+	transition: all 0.25s ease;
 
-	h2, h3 {                   /* ajusta al tag real */
-		min-height: 3em;
+	h3 {
+		font-family: 'Anton', sans-serif;
+		font-size: 1.15rem;
+		letter-spacing: 0.03em;
+		text-transform: uppercase;
+		color: #f5f5f0;
+		line-height: 1.15;
+		min-height: 2.3em;          /* reserva 2 líneas → fotos alineadas */
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin: 0 0 0.75rem;
-		font-size: 1.1rem;
-		line-height: 1.2;
+		margin: 0 0 0.85rem;
 	}
 
 	img {
-		width: 90%;            /* deja aire a los lados, como antes */
-		height: 190px;         /* más alta que ancha → vertical */
+		width: 100%;
+		height: 190px;
 		object-fit: cover;
-		object-position: center top;   /* prioriza la cara al recortar */
+		object-position: center top;
 		border-radius: 6px;
-		margin: 0;
+
+		filter: grayscale(0.4);     /* toque sutil — quítalo o ajústalo a gusto */
+		transition: filter 0.35s ease;
 		flex-shrink: 0;
 	}
 
@@ -75,10 +129,40 @@ export const CardCategory = styled.div`
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin: 0.75rem 0 0;
-		font-size: 0.95rem;
+		font-family: 'Space Mono', monospace;
+		font-size: 0.8rem;
+		line-height: 1.5;
+		// color: #9a9a9a;
+		color: white;
+		margin: 0.85rem 0 0;
+	}
+
+	/* barra roja inferior */
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 4px;
+		background: #e63946;
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 0.3s ease;
+	}
+
+	@media (min-width: 768px) {
+		&:hover {
+			border-color: #e63946;
+			transform: translateY(-4px);
+
+			img { filter: grayscale(0); }
+			&::after { transform: scaleX(1); }
+		}
 	}
 `;
+
+
 
 export const SearchInputContainer = styled.input`
 	width: 20%;
