@@ -10,7 +10,6 @@ export function Navigation() {
 				<p>Women DB</p>
 				<p>la base de datos universal de mujeres en la historia y en la actualidad</p>
 			</Link>
-			{/* <Link to="/tasks-create">Link a task-create</Link> */}
 		</NavigationContainer>
 	);
 }
