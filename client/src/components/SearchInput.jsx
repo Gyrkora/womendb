@@ -1,11 +1,11 @@
 import { SearchInputContainer } from '../styles/Categories.styles';
 
-export function SearchInput({ value, onChange }) {
+export function SearchInput({ value, onChange, placeholder }) {
 	return (
 		<SearchInputContainer
 			type="search"
 			value={value}
-			placeholder="Search woman"
+			placeholder={placeholder}
 			onChange={onChange}
 		/>
 	);

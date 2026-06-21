@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const NavigationContainer = styled.div`
+	position: relative;
 	margin: 0;
 	text-align: center;
 	background-color: #0a0a0a;
@@ -46,5 +47,27 @@ export const NavigationContainer = styled.div`
 		letter-spacing: 0.24em;
 		line-height: 1.6;
 		text-transform: uppercase;
+	}
+
+	button {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		padding: 0.55rem 0.7rem;
+		background: transparent;
+		border: 1px solid #e63946;
+		border-radius: 0;
+		color: #f5f5f0;
+		font-family: 'Space Mono', monospace;
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		cursor: pointer;
+	}
+
+	button:hover {
+		background: #e63946;
+		color: #0a0a0a;
 	}
 `;

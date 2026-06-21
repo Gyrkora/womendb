@@ -5,9 +5,11 @@ import { CardCategory, CategoriesContainer } from '../styles/Categories.styles';
 import { SearchInput } from '../components/SearchInput';
 import { getAllCategories, getAllWomen } from '../api/tasks.api';
 import { Loader } from '../components/UI/Loader';
+import { useLanguage } from '../context/LanguageContext';
 
 export const WomenByCategory = () => {
 	const { categoryId } = useParams();
+	const { language, t } = useLanguage();
 	const [women, setWomen] = useState([]);
 	const [category, setCategory] = useState({});
 	const [query, setQuery] = useState('');
@@ -17,7 +19,7 @@ export const WomenByCategory = () => {
 	useEffect(() => {
 		async function loadCategories() {
 			try {
-				const response = await getAllCategories(categoryId);
+				const response = await getAllCategories(categoryId, language);
 				setCategory(response.data);
 			} catch (error) {
 				console.error('An error occurred while fetching category:', error);
@@ -27,7 +29,7 @@ export const WomenByCategory = () => {
 		async function loadWomen() {
 			setLoading(true);
 			try {
-				const response = await getAllWomen(categoryId);
+				const response = await getAllWomen(categoryId, language);
 				setWomen(response.data);
 				setFilteredResults(response.data);
 			} catch (error) {
@@ -39,7 +41,7 @@ export const WomenByCategory = () => {
 
 		loadCategories();
 		loadWomen();
-	}, [categoryId]);
+	}, [categoryId, language]);
 
 	const handleInputChange = (e) => {
 		const newQuery = e.target.value;
@@ -66,7 +68,7 @@ export const WomenByCategory = () => {
 		<div>
 			<SearchInput
 				type="search"
-				placeholder="Search"
+				placeholder={t('search')}
 				value={query}
 				onChange={handleInputChange}
 			/>

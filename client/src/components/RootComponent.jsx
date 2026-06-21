@@ -3,8 +3,10 @@ import { useState, useEffect } from 'react';
 import { Categories } from '../pages/Categories';
 import { Loader } from './UI/Loader';
 import { getAllCategoriesList } from '../api/tasks.api';
+import { useLanguage } from '../context/LanguageContext';
 
 const RootComponent = () => {
+	const { language, t } = useLanguage();
 	const [categories, setCategories] = useState([]);
 	const [loading, setLoading] = useState(false);
 
@@ -12,7 +14,7 @@ const RootComponent = () => {
 		async function loadCategoriesList() {
 			setLoading(true);
 			try {
-				const response = await getAllCategoriesList();
+				const response = await getAllCategoriesList(language);
 				setCategories(response.data);
 			} catch (error) {
 				console.error('Error fetching categories:', error);
@@ -21,7 +23,7 @@ const RootComponent = () => {
 			}
 		}
 		loadCategoriesList();
-	}, []);
+	}, [language]);
 
 	if (loading) {
 		return (
@@ -36,7 +38,7 @@ const RootComponent = () => {
 			{categories ? (
 				<Categories categories={categories} />
 			) : (
-				<p>No objects loaded</p>
+				<p>{t('noObjectsLoaded')}</p>
 			)}
 		</div>
 	);

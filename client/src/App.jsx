@@ -3,10 +3,11 @@ import { Navigation } from './components/Navigation';
 import { WomenByCategory } from './pages/WomanByCategory';
 import RootComponent from './components/RootComponent';
 import { GlobalStyle } from './styles/GlobalStyle';
+import { LanguageProvider } from './context/LanguageContext';
 
 function App() {
 	return (
-		<>
+		<LanguageProvider>
 			<GlobalStyle />
 			<BrowserRouter>
 				<Navigation />
@@ -16,7 +17,7 @@ function App() {
 					<Route path="/category/:categoryId" element={<WomenByCategory />} />
 				</Routes>
 			</BrowserRouter>
-		</>
+		</LanguageProvider>
 	);
 }
 
