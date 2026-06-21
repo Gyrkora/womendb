@@ -1,13 +1,18 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { NavigationContainer } from '../styles/Navegation.styles';
 import { useLanguage } from '../context/LanguageContext';
 import logo from '../assets/logo.svg';
 
+// TODO: poner aquí la URL del collage
+const headerBg = null;
+
 export function Navigation() {
 	const { changeLanguage, t } = useLanguage();
+	const location = useLocation();
+	const compact = location.pathname.startsWith('/category');
 
 	return (
-		<NavigationContainer>
+		<NavigationContainer $compact={compact} $bg={headerBg}>
 			<Link to="/">
 				<img src={logo} alt="logo" />
 				<p className="wordmark">WOMEN <span>DB</span></p>

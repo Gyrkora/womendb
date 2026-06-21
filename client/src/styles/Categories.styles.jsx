@@ -9,75 +9,35 @@ export const CategoriesContainer = styled.div`
 	margin: 0 auto;
 	flex-wrap: wrap;
 	background-image: url(${(props) => props.$bgforimage});
-	background-size: repeat;
 	background-position: center;
 	position: relative;
 	min-height: 100vh;
 	width: 100%;
 	gap: 30px;
 
-	@media (min-width: 768px) {
-		background-size: cover;
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(18, 11, 11, 0.5);
+		z-index: 1;
 	}
-&::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(18, 11, 11, 0.5);   /* antes: rgba(0, 0, 0, 0.6) */
-	z-index: 1;
-}
+
+	/* desktop / tablet: sin collage, solo negro */
+	@media (min-width: 768px) {
+		// background-image: none;
+		background-image: url(${(props) => props.$bgforimage});
+	background-position: center;
+		background-color: #0a0a0a;
+
+		&::before {
+			display: none;
+		}
+	}
 `;
-
-// export const CardCategory = styled.div`
-// 	display: flex;
-// 	flex-direction: column;
-// 	align-items: center;
-// 	justify-content: flex-start;
-// 	text-align: center;
-// 	z-index: 10;
-
-// 	width: 250px;
-// 	height: 450px;             /* más alto → más vertical, menos cuadrada */
-// 	margin: 0;
-// 	padding: 1rem;
-
-// 	border-radius: 10px;
-// 	color: black;
-// 	border: 5px solid #980e0e;
-// 	background-color: rgba(255, 255, 255, 0.6);
-
-// 	h2, h3 {                   /* ajusta al tag real */
-// 		min-height: 3em;
-// 		display: flex;
-// 		align-items: center;
-// 		justify-content: center;
-// 		margin: 0 0 0.75rem;
-// 		font-size: 1.1rem;
-// 		line-height: 1.2;
-// 	}
-
-// 	img {
-// 		width: 90%;            /* deja aire a los lados, como antes */
-// 		height: 190px;         /* más alta que ancha → vertical */
-// 		object-fit: cover;
-// 		object-position: center top;   /* prioriza la cara al recortar */
-// 		border-radius: 6px;
-// 		margin: 0;
-// 		flex-shrink: 0;
-// 	}
-
-// 	p {
-// 		flex: 1;
-// 		display: flex;
-// 		align-items: center;
-// 		justify-content: center;
-// 		margin: 0.75rem 0 0;
-// 		font-size: 0.95rem;
-// 	}
-// `;
 
 
 export const CardCategory = styled.div`
@@ -114,7 +74,7 @@ export const CardCategory = styled.div`
 
 	img {
 		width: 100%;
-		height: 190px;
+		height: 210px;
 		object-fit: cover;
 		object-position: center top;
 		border-radius: 6px;
@@ -152,8 +112,9 @@ export const CardCategory = styled.div`
 	}
 
 	@media (min-width: 768px) {
+		border-color: #e63946;
+
 		&:hover {
-			border-color: #e63946;
 			transform: translateY(-4px);
 
 			img { filter: grayscale(0); }
